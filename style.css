@@ -1,0 +1,12 @@
+.circle-img {
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #dee2e6;
+    object-fit: contain;
+}
+
+.info-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

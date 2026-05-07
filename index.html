@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeAPI Cloud - Astrid Rondon</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-light d-flex align-items-center vh-100">
+
+<div class="container bg-white p-4 shadow rounded" style="max-width: 500px;">
+    <h3 class="text-center mb-4">Buscador Pokémon (Nube)</h3>
+    
+    <div class="mb-3">
+        <label for="pokeInput" class="form-label">Nombre del Pokémon:</label>
+        <input type="text" id="pokeInput" class="form-control mb-3" placeholder="Ej. Butterfree">
+        
+        <div class="d-grid gap-2">
+            <button id="btnSql" class="btn btn-primary">Consultar SQL (Supabase)</button>
+            <button id="btnNosql" class="btn btn-success">Consultar NoSQL (MongoDB)</button>
+        </div>
+    </div>
+
+    <div class="card info-box p-3 border-secondary shadow-sm mb-3 bg-light" style="min-height: 150px;">
+        <div id="displayInfo">
+            <p class="text-muted text-center">Ingresa un nombre y elige una base de datos</p>
+        </div>
+    </div>
+
+    <button id="btnModal" class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#imgModal" disabled>
+        Ver imágenes
+    </button>
+</div>
+
+<div class="modal fade" id="imgModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Imágenes del Pokémon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex justify-content-around text-center">
+                <div>
+                    <img id="imgF" class="circle-img shadow-sm mb-2" style="width: 120px; height: 120px;">
+                    <p class="fw-bold">Frontal</p>
+                </div>
+                <div>
+                    <img id="imgB" class="circle-img shadow-sm mb-2" style="width: 120px; height: 120px;">
+                    <p class="fw-bold">Posterior</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="funcionalidad.js"></script>
+</body>
+</html>
