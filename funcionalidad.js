@@ -26,15 +26,20 @@ async function consultar(tipo) {
             displayInfo.innerHTML = `
                 <div class="text-center">
                     <h4 class="text-capitalize text-success">${data.nombre}</h4>
-                    <p><strong>ID:</strong> ${data.id} | <strong>Peso:</strong> ${data.peso}</p>
-                    <p class="text-muted">Poderes: ${data.poderes}</p>
+                    <p><strong>ID:</strong> ${data.id} | <strong>Tipo:</strong> ${data.tipo}</p>
+                    <p class="text-muted">Habilidad: ${data.habilidad}</p>
                 </div>`;
-            imgF.src = data.imagenFrontal;
-            imgB.src = data.imagenPosterior;
+            
+            // Asignamos la imagen que viene de la base de datos
+            imgF.src = data.imagen || ""; 
+            // Como no tienes imagen posterior en la BD, la dejamos vacía
+            imgB.src = ""; 
+            
             modalTitle.innerText = `Imágenes de ${data.nombre}`;
             btnModal.disabled = false;
         } else {
-            displayInfo.innerHTML = `<p class="text-danger text-center">❌ ${data.message}</p>`;
+            // Ahora mostrará el error real (data.error) o el mensaje de no encontrado (data.message)
+            displayInfo.innerHTML = `<p class="text-danger text-center">❌ ${data.error || data.message}</p>`;
         }
     } catch (error) {
         displayInfo.innerHTML = `<p class="text-danger text-center">❌ Error de conexión</p>`;
