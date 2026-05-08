@@ -1,6 +1,4 @@
-// NUEVA URL DEL BACKEND
 const API_URL = "https://pokeapi-backend-production-a5ec.up.railway.app/pokemon";
-
 const pokeInput = document.getElementById('pokeInput');
 const displayInfo = document.getElementById('displayInfo');
 const btnModal = document.getElementById('btnModal');
@@ -26,19 +24,18 @@ async function consultar(tipo) {
             displayInfo.innerHTML = `
                 <div class="text-center">
                     <h4 class="text-capitalize text-success">${data.nombre}</h4>
-                    <p><strong>ID:</strong> ${data.id} | <strong>Tipo:</strong> ${data.tipo}</p>
-                    <p class="text-muted">Habilidad: ${data.habilidad}</p>
+                    <p><strong>ID:</strong> ${data.id}</p>
+                    <p><strong>Peso:</strong> ${data.peso} | <strong>Altura:</strong> ${data.altura}</p>
+                    <p class="text-muted"><strong>Poderes:</strong> ${data.poderes}</p>
                 </div>`;
-            
-            // Asignamos la imagen que viene de la base de datos
-            imgF.src = data.imagen || ""; 
-            // Como no tienes imagen posterior en la BD, la dejamos vacía
-            imgB.src = ""; 
-            
+
+            // Imágenes frontal y posterior de la BD
+            imgF.src = data.imagenfrontal || data.imagenFrontal || "";
+            imgB.src = data.imagenposterior || data.imagenPosterior || "";
+
             modalTitle.innerText = `Imágenes de ${data.nombre}`;
             btnModal.disabled = false;
         } else {
-            // Ahora mostrará el error real (data.error) o el mensaje de no encontrado (data.message)
             displayInfo.innerHTML = `<p class="text-danger text-center">❌ ${data.error || data.message}</p>`;
         }
     } catch (error) {
